@@ -1,5 +1,5 @@
-import { Column } from './Column'
-import { Row, RowPlaceMark } from './Row'
+import { Column, ColumnIdx } from './Column'
+import { IsRowSpaceTaken, Row, RowIdx, RowPlaceMark } from './Row'
 import { O, Space, X, _ } from './Space'
 
 // ----------------------------------------------------------------- //
@@ -40,3 +40,19 @@ export type PlaceMark<
        ? RowPlaceMark<M, J, B[2]>
        : B[2]
   }
+
+export type IsBoardSpaceTaken<
+  I extends RowIdx,
+  J extends ColumnIdx,
+  B extends AnyBoard
+> =
+  B extends Board<
+    infer _00, infer _01, infer _02,
+    infer _10, infer _11, infer _12,
+    infer _20, infer _21, infer _22
+  >
+    ? I extends 0 ? IsRowSpaceTaken<J, Row<_00, _01, _02>>
+    : I extends 1 ? IsRowSpaceTaken<J, Row<_10, _11, _12>>
+    : I extends 2 ? IsRowSpaceTaken<J, Row<_20, _21, _22>>
+    : never
+  : never

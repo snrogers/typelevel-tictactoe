@@ -2,7 +2,7 @@ import { BoardColumn, PlaceMark } from './Board'
 import { Column } from './Column'
 import { Row } from './Row'
 import { O, X } from './Space'
-import { AnyGameData, Game, GameData } from './TicTacToe'
+import { AnyGameData, Game, GameData } from './Game'
 import { ComputeFlat } from './Utils'
 
 export type AnyAction = AnyPlaceMarkAction

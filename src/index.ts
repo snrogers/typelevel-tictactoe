@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { game } from './TicTacToe'
+import { game } from './Game'
 
 const gameState = game
   .placeX[1][1]
