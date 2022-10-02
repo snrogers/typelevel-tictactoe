@@ -2,7 +2,6 @@ import { Column } from './Column'
 import { Row, RowPlaceMark } from './Row'
 import { O, Space, X, _ } from './Space'
 
-
 // ----------------------------------------------------------------- //
 // Data
 // ----------------------------------------------------------------- //

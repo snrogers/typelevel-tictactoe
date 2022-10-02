@@ -26,7 +26,7 @@ type MoveInterface<
   M extends X | O = GetNextToMove<GD['state']>,
   Key extends 'X' | 'O' = M extends X ? 'X' : 'O'
 > = { [key in `place${Key}`]:
-      { 0: { 0: InterpretAction<PlaceMarkAction<X, 0, 0>, GD>
+      { 0: { 0: InterpretAction<PlaceMarkAction<M, 0, 0>, GD>
            , 1: InterpretAction<PlaceMarkAction<M, 0, 1>, GD>
            , 2: InterpretAction<PlaceMarkAction<M, 0, 2>, GD>
            }
@@ -42,10 +42,13 @@ type MoveInterface<
     }
 
 
+const GameStateKey: unique symbol = Symbol()
+type GameStateKey = typeof GameStateKey
+
 export type AnyGame = Game<AnyGameData>
-export type Game<GS extends AnyGameData> = {
-  gameState: GS,
-} & MoveInterface<GS>
+export type Game<GD extends AnyGameData> =
+  { [GameStateKey]: GD }
+  & MoveInterface<GD>
 type NewGame = Game<GameData<NewBoard, 'X TO MOVE'>>
 
 type Test = MoveInterface<GameData<NewBoard, 'X TO MOVE'>, X>

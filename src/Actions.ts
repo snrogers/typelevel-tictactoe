@@ -13,10 +13,10 @@ export type PlaceMarkAction<
   I extends 0 | 1 | 2,
   J extends 0 | 1 | 2
 > =
-  { type: 'PLACE_MARK',
-    mark: M,
-    I: I,
-    J: J
+  { type: 'PLACE_MARK'
+  , mark: M
+  , I: I
+  , J: J
   }
 
 type IsWinner<
