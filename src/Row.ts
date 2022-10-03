@@ -27,3 +27,11 @@ export type IsRowSpaceTaken<I extends RowIdx, R extends AnyRow> =
     : I extends 2 ? IsSpaceTaken<_2>
     : never
   : never
+
+export type RowGetFreeSpace<R extends AnyRow> =
+  R extends Row<infer _0 extends Space, infer _1 extends Space, infer _2 extends Space>
+   ? | (IsSpaceTaken<_0> extends true ? never : 0)
+     | (IsSpaceTaken<_1> extends true ? never : 1)
+     | (IsSpaceTaken<_2> extends true ? never : 2)
+  : never
+
