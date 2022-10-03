@@ -11,4 +11,4 @@ type thing = RowFreeSpace<gameRow>
 const gameState = game
   .placeX[0][0]
   .placeO[0][1]
-  .placeX[1][1]
+  .placeX[0][2]
