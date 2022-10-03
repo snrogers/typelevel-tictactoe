@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { AnyBoard, Board, BoardColumn, NewBoard, PlaceMark } from './Board'
+import { AnyBoard, Board, BoardColumn, BoardUnfilledRowIndices, NewBoard, PlaceMark } from './Board'
 import { AnyRow, Row } from './Row'
 import { Column } from './Column'
 import { O, Space, X, _ } from './Space'
@@ -42,6 +42,9 @@ export type GetNextToMove<GS extends GameState> =
   GS extends 'X TO MOVE' ? X :
   GS extends 'O TO MOVE' ? O :
   never
+
+export type GameDataUnfilledRowIndices<GD extends AnyGameData> =
+  BoardUnfilledRowIndices<GD['board']>
 
 // ----------------------------------------------------------------- //
 // Testing

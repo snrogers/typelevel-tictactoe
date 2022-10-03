@@ -1,6 +1,7 @@
 import { Column, ColumnIdx } from './Column'
 import { IsRowSpaceTaken, Row, RowIdx, RowPlaceMark } from './Row'
 import { O, Space, X, _ } from './Space'
+import { Equals } from './Utils'
 
 // ----------------------------------------------------------------- //
 // Data
@@ -56,3 +57,25 @@ export type IsBoardSpaceTaken<
     : I extends 2 ? IsRowSpaceTaken<J, Row<_20, _21, _22>>
     : never
   : never
+
+export type BoardUnfilledRowIndices<B extends AnyBoard> =
+  B extends Board<
+    infer _00 extends Space, infer _01 extends Space, infer _02 extends Space,
+    infer _10 extends Space, infer _11 extends Space, infer _12 extends Space,
+    infer _20 extends Space, infer _21 extends Space, infer _22 extends Space
+  >
+    ? | (Equals<Extract<_00 | _01 | _02, _>, _> extends true ? 0 : never)
+      | (Equals<Extract<_10 | _11 | _12, _>, _> extends true ? 1 : never)
+      | (Equals<Extract<_20 | _21 | _22, _>, _> extends true ? 2 : never)
+    : never
+
+// ----------------------------------------------------------------- //
+// Testing
+// ----------------------------------------------------------------- //
+type BoardFixture = Board<
+    X, X, X,
+    O, O, O,
+    X, X, X
+>
+
+type TestRowIndices = BoardUnfilledRowIndices<BoardFixture>
