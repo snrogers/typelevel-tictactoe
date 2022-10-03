@@ -1,7 +1,7 @@
 import { InterpretAction, PlaceMarkAction } from './Actions'
 import { O, X, _ } from './Space'
 import { AnyGameData, GetNextToMove } from './Game'
-import { RowGetFreeSpace, RowIdx } from './Row'
+import { RowFreeSpace, RowIdx } from './Row'
 
 export type MoveInterface<
   GD  extends AnyGameData,
@@ -14,7 +14,7 @@ export type MoveInterface<
 }
 
 export type MoveInterfaceRow<I extends RowIdx, M extends X | O, GD extends AnyGameData> =
-{ [J in RowGetFreeSpace<GD['board'][I]>]: InterpretAction<PlaceMarkAction<M, I, J>, GD>
+{ [J in RowFreeSpace<GD['board'][I]>]: InterpretAction<PlaceMarkAction<M, I, J>, GD>
 }
 
 // export type RenderRowUI<M extends X | O, GD extends AnyGameData> =
