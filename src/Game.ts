@@ -49,4 +49,3 @@ export type GameDataUnfilledRowIndices<GD extends AnyGameData> =
 // ----------------------------------------------------------------- //
 // Testing
 // ----------------------------------------------------------------- //
-export const game = null as unknown as NewGame
