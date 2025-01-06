@@ -25,4 +25,4 @@ const GameState = NewGame
 ```
 
 Peak the type of the `GameState` variable to see the current state of the game.
-[Here's an example](https://github.com/snrogers/typelevel-tictactoe/blob/master/example.png)
+![Here's an example](https://github.com/snrogers/typelevel-tictactoe/blob/master/example.png)
